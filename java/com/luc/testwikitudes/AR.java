@@ -1,10 +1,15 @@
 package com.luc.testwikitudes;
 
 import android.app.Activity;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
 
@@ -22,12 +27,26 @@ public class AR extends Activity {
         setContentView(R.layout.ar);
 
         this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
-        final ArchitectView.ArchitectConfig config = new ArchitectView.ArchitectConfig( "hJrKxY9SHgBjUbON37+BaFoSkCO0VgPoFedpitZHBge3iJO++GmcDSAt7x1RwAKUHbZGs7TsTumfTsfa67OafpWZNG66beA3AAKoraD4c1sphs1hgLCb/GUjRv5MSo7BZleK6qk9bhBltpxBy6y+0dzzzVXl13Np8BKafOn7ewRTYWx0ZWRfXygQFR7iIQiKELFbBn975SvjoMqz/H/D75oJCwHh7KnkuRNuof4+V666OzPQ289FxV217JEIKEwFwgO9KyKo38ggkv08pRwsvrQ4lkCVmtOxr74mqzn3Z/AKZn+RSZQgQwN8js57USdfpYVVIWQrh2Bu+QRM4Pmbu3JPbbRIBM0MUmzAUkmF1ey/Ygv+6t/fxywjltNAMEjmnit+nVpEaCLbEoeDTO9A3IMLlKSHTwBskoT2IqShnz/Z69QUTIOvr6PZl0kQs/VoaC+TEflysyNvf4KLdeMtyUYb7ImmC5Zo81qBZd9jP53pjGRxEV8prWxuwE4Y1mHESGkbAgiH+i+mT4cOrPMLCZ4/zwRj+VgXZzvYliW0ycjr1PqahnmPoSpIBwlrp8+XokiDWUH9IcxYbGzv8bMCh7j1eMejExVmhVCVAc/JGEjLussH9LAzf850+ptKGTXKvC0rpd83KXmtpQ6CCeTWOVzJYxNbFqmxSvkzxpgG7/U=" /* license key */ );
+        final ArchitectView.ArchitectConfig config = new ArchitectView.ArchitectConfig( getResources().getString(R.string.sdk_key) /* license key */ );
         this.architectView.onCreate( config );
+        Button b = (Button) findViewById(R.id.addPOI);
+
+        /*
+        * temporary
+        * */
+        final Toast t = Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.show();
+            }
+        });
+
+
 
         this.architectView.onPostCreate();
         try {
-            this.architectView.load("geoloc.html");
+            this.architectView.load("index.html");
         }catch(IOException ioe) {
             Log.v("HTML loading", "" + ioe.getMessage());
         }
@@ -61,11 +80,16 @@ public class AR extends Activity {
 
     public void onPause() {
         super.onPause();
+        architectView.onPause();
     }
+
     public void onResume() {
         super.onResume();
+        architectView.onResume();
     }
+
     public void onDestroy() {
         super.onDestroy();
+        architectView.onDestroy();
     }
 }

@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements LocationListener {
 
         i = new Intent(this, AR.class);
 
-        Button b = (Button) findViewById(R.id.button);
+        Button b = (Button) findViewById(R.id.geoloc);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +39,8 @@ public class MainActivity extends Activity implements LocationListener {
 
         });
 
-        lat = (TextView) findViewById(R.id.textView3);
-        lon = (TextView) findViewById(R.id.textView4);
+        lat = (TextView) findViewById(R.id.latval);
+        lon = (TextView) findViewById(R.id.lonval);
 
     }
 
