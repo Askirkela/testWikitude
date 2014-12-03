@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements LocationListener {
+public class AddPOI extends Activity implements LocationListener {
 
     private static Intent i;
     private TextView lat;

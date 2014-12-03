@@ -76,9 +76,24 @@ var World = {
 			/* 
 				requestDataFromLocal with the geo information as parameters (latitude, longitude) creates different poi data to a random location in the user's vicinity.
 			*/
-			World.requestDataFromLocal(lat, lon);
-			World.initiallyLoadedData = true;
+			//World.requestDataFromLocal(lat, lon);
+
+			var pois = null;
+			$.getJSON('http://192.168.1.16/andro/download.php', function(jsondata) {
+			    console.log(jsondata);
+			    pois = jsondata;
+
+			});
+			setTimeout(function() {
+				console.log(pois);
+
+				World.loadPoisFromJsonData(pois);
+	
+				World.initiallyLoadedData = true;
+			}, 6000);
+			
 		}
+			World.initiallyLoadedData = false;
 	},
 
 	// fired when user pressed maker in cam
@@ -121,6 +136,7 @@ var World = {
 			});
 		}
 		World.loadPoisFromJsonData(poiData);
+		console.log("requestDataFromLocal" + poiData);
 	}
 
 };
