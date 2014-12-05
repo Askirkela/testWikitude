@@ -1,5 +1,0 @@
-#!/bin/bash
-cp -R ../AndroidStudioProjects/testwikitudes/app/src/main/* testWikitude/
-git add [^.]*
-git commit -m $1
-git push origin master
