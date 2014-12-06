@@ -79,7 +79,7 @@ var World = {
 			//World.requestDataFromLocal(lat, lon);
 
 			var pois = null;
-			$.getJSON('http://192.168.1.16/andro/download.php', function(jsondata) {
+			$.getJSON('http://www.luc-debene.fr/andro/download.php', function(jsondata) {
 			    console.log(jsondata);
 			    pois = jsondata;
 
@@ -90,7 +90,7 @@ var World = {
 				World.loadPoisFromJsonData(pois);
 	
 				World.initiallyLoadedData = true;
-			}, 6000);
+			}, 3000);
 			
 		}
 			World.initiallyLoadedData = false;

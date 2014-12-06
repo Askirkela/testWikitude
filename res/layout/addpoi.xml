@@ -17,7 +17,8 @@ android:weightSum="1">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/latval"/>
+        android:id="@+id/latval"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,7 +31,22 @@ android:weightSum="1">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/lonval"/>
+        android:id="@+id/lonval"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/altitude"
+        android:id="@+id/alt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/altval"
+        android:layout_gravity="center_horizontal" />
 
 
 
@@ -38,14 +54,23 @@ android:weightSum="1">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/nom"
+        android:text="@string/name"
         android:id="@+id/nom" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nomval"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FF0000"
+        android:text="@string/warning" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,12 +84,21 @@ android:weightSum="1">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/descrval"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FF0000"
+        android:text="@string/warning" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geoloc"
-        android:id="@+id/geoloc"
-        android:layout_gravity="center_horizontal" />
+        android:text="@string/add"
+        android:id="@+id/add"
+        android:layout_gravity="center_horizontal|bottom" />
 </LinearLayout>

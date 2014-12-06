@@ -2,23 +2,17 @@ package com.luc.testwikitudes;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.hardware.Camera;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -33,12 +27,10 @@ public class AR extends Activity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ar);
 
-        this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
-        final ArchitectView.ArchitectConfig config = new ArchitectView.ArchitectConfig( getResources().getString(R.string.sdk_key) /* license key */ );
-        this.architectView.onCreate( config );
+        this.architectView = (ArchitectView) this.findViewById(R.id.architectView);
+        final ArchitectView.ArchitectConfig config = new ArchitectView.ArchitectConfig(getResources().getString(R.string.sdk_key) /* license key */);
+        this.architectView.onCreate(config);
         Button b = (Button) findViewById(R.id.addPOI);
-
-
 
         i = new Intent(this, AddPOI.class);
         b.setOnClickListener(new View.OnClickListener() {
@@ -51,35 +43,13 @@ public class AR extends Activity implements LocationListener {
         this.architectView.onPostCreate();
         try {
             this.architectView.load("index.html");
-        }catch(IOException ioe) {
+        } catch (IOException ioe) {
             Log.v("HTML loading", "" + ioe.getMessage());
         }
     }
 
     public void onPostCreate() {
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void onPause() {
@@ -101,6 +71,7 @@ public class AR extends Activity implements LocationListener {
     public void onDestroy() {
         super.onDestroy();
         architectView.onDestroy();
+        lmg.removeUpdates(this);
     }
 
     @Override
